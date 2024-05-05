@@ -41,3 +41,5 @@ vim.keymap.set('t', '<Esc>', "<C-\\><C-n><C-w>h", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+

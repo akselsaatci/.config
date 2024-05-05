@@ -1,6 +1,7 @@
 require("aksel.remap")
 require("aksel.set")
-
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -56,7 +57,7 @@ require'nvim-web-devicons'.setup {
   }
  };
 }
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme rose-pine")
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
