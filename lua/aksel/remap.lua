@@ -23,6 +23,8 @@ vim.api.nvim_set_keymap("n", "tj", ":bprev<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "tk", ":bnext<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", { noremap = false })
 
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)

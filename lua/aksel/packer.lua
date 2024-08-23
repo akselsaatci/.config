@@ -55,6 +55,13 @@ return require('packer').startup(function(use)
         }
     }
 
+    use 'mfussenegger/nvim-dap'
+
+    use "leoluz/nvim-dap-go"
+    use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
+    use "nvim-neotest/nvim-nio"
+    use 'mfussenegger/nvim-dap-python'
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
