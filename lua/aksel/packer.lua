@@ -68,4 +68,10 @@ return require('packer').startup(function(use)
             'nvim-tree/nvim-web-devicons', -- optional
         },
     }
+    use {
+        'goolord/alpha-nvim',
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+        end
+    }
 end)

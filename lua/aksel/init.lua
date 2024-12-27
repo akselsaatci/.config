@@ -57,10 +57,13 @@ require 'nvim-web-devicons'.setup {
         }
     },
 }
-vim.cmd("colorscheme rose-pine")
+-- settin colorscheme here
+vim.cmd("colorscheme catppuccin-mocha")
+
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- My plugins here
     -- use 'foo1/bar1.nvim'
     -- use 'foo2/bar2.nvim'
