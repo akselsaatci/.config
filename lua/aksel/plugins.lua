@@ -5,9 +5,9 @@
 
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
@@ -18,7 +18,6 @@ local packer_bootstrap = ensure_packer()
 
 
 
-vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
@@ -27,7 +26,10 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-    use 'wbthomason/packer.nvim'
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+    }
 
     use 'mg979/vim-visual-multi'
     use 'christoomey/vim-tmux-navigator'
@@ -46,6 +48,8 @@ return require('packer').startup(function(use)
     use("mbbill/undotree")
 
     use('ThePrimeagen/vim-be-good')
+
+    use 'mfussenegger/nvim-dap'
 
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
@@ -74,6 +78,10 @@ return require('packer').startup(function(use)
     use "rcarriga/nvim-dap-ui"
     use "theHamsta/nvim-dap-virtual-text"
     use "nvim-neotest/nvim-nio"
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
     use 'mfussenegger/nvim-dap-python'
     use {
         'nvim-tree/nvim-tree.lua',
@@ -132,12 +140,34 @@ return require('packer').startup(function(use)
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
-    -- My plugins here
-    -- use 'foo1/bar1.nvim'
-    -- use 'foo2/bar2.nvim'
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
+    use {
+        'echasnovski/mini.comment',
+        config = function()
+            require('mini.comment').setup()
+        end
+    }
+
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*", -- recommended, use latest release instead of latest commit
+        requires = {
+            "nvim-lua/plenary.nvim",
+
+        },
+        config = function()
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "personal",
+                        path = "/Users/akselsaatci/Documents/Obsidian Vault",
+                    }
+                },
+
+            })
+        end,
+    })
+
     if packer_bootstrap then
         require('packer').sync()
     end
